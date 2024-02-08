@@ -4,6 +4,13 @@ from django.contrib.auth.decorators import login_required
 from .models import Item
 from . forms import NewItemForm, EditItemForm
 
+def items(request):
+    item = Item.objects.filter(is_sold=False)
+
+    return render(request, 'item/items.html', {
+        'items': items,
+
+    })
 
 # Create your views here.
 def detail(request, pk):
@@ -31,27 +38,28 @@ def new(request):
 
     return render(request, 'item/form.html',{
         'form': form,
-        'title': 'NewItemForm',
+        'title': 'New Item Form',
     })
 
 @login_required
 def edit(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
-
+    
     if request.method == 'POST':
         form = EditItemForm(request.POST, request.FILES, instance=item)
-
+        
         if form.is_valid():
             form.save()
-
-            return redirect('item:detail', pk=item.id)
+            
+            return redirect('item:detail', pk=pk)
     else:
         form = EditItemForm(instance=item)
-
-    return render(request, 'item/form.html',{
-        'form': form,
-        'title': 'Edit item',
+    
+    return render(request, 'item/edit.html', {
+        'form': form, 
+        'item': item
     })
+
 
 @login_required
 def delete(request, pk):
