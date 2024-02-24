@@ -23,5 +23,12 @@
            "src": "/(.*)",
            "dest": "puddel/wsgi.py" 
         }
+    ],
+    "rewrites": [
+        {"rewrites": [{
+            "source": "/(.*)", 
+            "destination": "/"
+            }]
+        }
     ]
 }
