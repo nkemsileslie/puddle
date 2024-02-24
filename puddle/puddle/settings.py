@@ -141,9 +141,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = BASE_DIR/'assets'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR/'media/'
-
 if not DEBUG:    
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
 
@@ -154,6 +151,9 @@ if not DEBUG:
 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR/'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
