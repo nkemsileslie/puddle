@@ -91,25 +91,18 @@ WSGI_APPLICATION = 'puddle.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "railway",
-#         "USER": "postgres",
-#         "PASSWORD": "13-535F2EbFEB2deefB5DEbAaGce6D2E",
-#         "HOST": "monorail.proxy.rlwy.net",
-#         "PORT": "42994",
-#     }
-# }
-
-# Replace the SQLite DATABASES configuration with PostgreSQL:
-
 DATABASES = {
-    'default': dj_database_url.config(        
-    # Replace this value with your local database's connection string.        
-        default='postgresql://postgres:postgres@localhost:5432/mysite',        conn_max_age=600    
-        )
+    'default': {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "railway",
+        "USER": "postgres",
+        "PASSWORD": "13-535F2EbFEB2deefB5DEbAaGce6D2E",
+        "HOST": "monorail.proxy.rlwy.net",
+        "PORT": "42994",
     }
+}
+
+#Replace the SQLite DATABASES configuration with PostgreSQL:
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
